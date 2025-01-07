@@ -26,3 +26,11 @@ export const createUser = async (body) => {
     const url = "/createUser";
     return await fetchApi(url, 'POST', body);
   };
+  export const createProduct = async (body) => {
+    const url = "/createProduct";
+    return await fetchApi(url, 'POST', body);
+  };
+  export const getAllProducts = async () => {
+    const url = "/getAllProducts";  // Get all products endpoint
+    return await fetchApi(url, 'GET');  // No body needed for GET request
+  };

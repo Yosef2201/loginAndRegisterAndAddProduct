@@ -28,29 +28,29 @@ Nav.navigate('Home')
      <Text>Name (Phone)</Text>
       <TextInput
         style={styles.input}
-        onChangeText={setUserName}  // עדכון מצב שם
+        onChangeText={setUserName}  
         value={userName}
         placeholder="Enter your phone number"
       />
       <Text>Password</Text>
       <TextInput
         style={styles.input}
-        onChangeText={setPassword}  // עדכון מצב סיסמה
+        onChangeText={setPassword}  
         value={password}
         placeholder="Enter your password"
-        secureTextEntry={true}  // להסתיר את הסיסמה
+        secureTextEntry={true}  
       /> 
        <Text> (Phone)</Text>
       <TextInput
         style={styles.input}
-        onChangeText={setPhone}  // עדכון מצב שם
+        onChangeText={setPhone}  
         value={phone}
         placeholder="Enter your phone number"
       />
       <Text>Email</Text>
       <TextInput
         style={styles.input}
-        onChangeText={setEmail}  // עדכון מצב סיסמה
+        onChangeText={setEmail} 
         value={email}
         placeholder="Enter your password"
       /> 

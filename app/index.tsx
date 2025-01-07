@@ -1,31 +1,30 @@
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import React, { useState } from 'react';
 import { useNavigation } from 'expo-router';
-import { login } from '../API/fechApi';  // וודא שהנתיב נכון
+import { login } from '../API/fechApi';  
 
 const Index = () => {
-  const [name, setName] = useState('');  // עבור שם משתמש (במקרה זה מספר טלפון)
-  const [password, setPassword] = useState('');  // עבור סיסמה
+  const [name, setName] = useState('');  
+  const [password, setPassword] = useState('');
   const Nav = useNavigation();
 
-  // פונקציה שנקראת בעת לחיצה על כפתור "Go to Home"
   const goToHome = () => {
     const body = {
-      phone: name,  // שימוש במשתנה name כטלפון
+      phone: name,  
       password: password,
     };
   
     login(body)
       .then((response) => {
-        console.log('Response from server:', response);  // הדפסת התגובה מהשרת
+        console.log('Response from server:', response); 
         if (response.success) {
           Nav.navigate('Home');
         } else {
-          alert('Invalid credentials, please try again.');
+          alert('Invalid credentials, please try again.')
         }
       })
       .catch((error) => {
-        console.error('Login error:', error.message);  // הדפסת השגיאה ב-console
+        console.error('Login error:', error.message);  
         alert('An error occurred, please check your connection and try again.');
       });
   };
@@ -35,17 +34,17 @@ const Index = () => {
       <Text>Name (Phone)</Text>
       <TextInput
         style={styles.input}
-        onChangeText={setName}  // עדכון מצב שם
+        onChangeText={setName}  
         value={name}
         placeholder="Enter your phone number"
       />
       <Text>Password</Text>
       <TextInput
         style={styles.input}
-        onChangeText={setPassword}  // עדכון מצב סיסמה
+        onChangeText={setPassword}  
         value={password}
         placeholder="Enter your password"
-        secureTextEntry={true}  // להסתיר את הסיסמה
+        secureTextEntry={true} 
       />
       <Button 
         onPress={goToHome}
