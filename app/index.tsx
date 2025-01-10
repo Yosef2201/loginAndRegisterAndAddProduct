@@ -9,11 +9,11 @@ const Index = () => {
   const Nav = useNavigation();
 
   const goToHome = () => {
-const body={
+const data={
     phone:name, //      ((حسب (المدخل) المستصفح name)=(phone حسب السيرفر )
   password:password //  ((حسب (المدخل) المستصفح password)=(password حسب السيرفر )
 }
-login(body)   //(نداء للعمليه login وتعوض ال data بمكان ال body )
+login(data)   //(نداء للعمليه login وتعوض ال data بمكان ال body )
 .then((response)=>{
   console.log(response);
 
