@@ -22,18 +22,21 @@ const Home = () => {
 
     fetchProducts();  // Fetch products on component mount
   }, []);  // Empty dependency array ensures it runs once when the component mounts
-
+const renderCard=()=>{
+    return products.map((item)=>(
+        <Card
+        key={item._id}
+        productName={item.productName}
+        price={item.price}
+        Image={item.Image}
+      />
+    ))
+}
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {products.map((product) => (
-          <Card
-            key={product._id}
-            productName={product.productName}
-            price={product.price}
-            Image={product.Image}
-          />
-        ))}
+     
+  {renderCard()}
       </ScrollView>
       <Button title="Add Product" onPress={() => Nav.navigate('AddProduct')} />
     </View>
@@ -46,7 +49,7 @@ const styles = StyleSheet.create({
     // padding: 16,
   },
   scrollContainer: {
-    flexGrow: 1,
+    // flexGrow: 1,
     // justifyContent: 'center',
   },
 });
