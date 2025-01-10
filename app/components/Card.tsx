@@ -5,10 +5,12 @@ const Card = (props:any) => {
 
   return (
     <View style={styles.container}>
-    
+    <View style={styles.cardContainer}>
+
       <Text style={styles.pp}>{props.productName}</Text>
       <Text style={styles.pr}>{props.price}</Text>
-      <Text >{props.Image}</Text>
+      </View>
+      <Text style={styles.img} >{props.Image}</Text>
 
 
     </View>
@@ -20,12 +22,14 @@ export default Card
 const styles = StyleSheet.create({
     container:{
         borderWidth:1,
-        width:200,
+        // width:200,
         // height:200,
+        flexDirection:'row',
+        backgroundColor:'blue',
 
-        justifyContent:'center',
-        // flex:1,
-        alignItems:'center',
+        // justifyContent:'center',
+        flex:1,
+        // alignItems:'center',
         // left:60,
     
     },
@@ -37,6 +41,14 @@ const styles = StyleSheet.create({
         backgroundColor:'red',
         color:'white',
         borderRadius:50,
-        padding:5
+        padding:5,
+        marginLeft:'auto'
+
+    },
+    cardContainer:{
+      width:300  
+    },
+    img:{
+        marginLeft:'auto'
     }
 })

@@ -9,36 +9,39 @@ const Index = () => {
   const Nav = useNavigation();
 
   const goToHome = () => {
-    const body = {
-      phone: name,  
-      password: password,
-    };
-  
-    login(body)
-      .then((response) => {
-        console.log('Response from server:', response); 
-        if (response.success) {
-          Nav.navigate('Home');
-        } else {
-          alert('Invalid credentials, please try again.')
-        }
-      })
-      .catch((error) => {
+const body={
+    phone:name, //      ((حسب (المدخل) المستصفح name)=(phone حسب السيرفر )
+  password:password //  ((حسب (المدخل) المستصفح password)=(password حسب السيرفر )
+}
+login(body)   //(نداء للعمليه login وتعوض ال data بمكان ال body )
+.then((response)=>{
+  console.log(response);
+
+  if (response.success==true) // اذا الاسم والسسما صحيحه وموجوده انتقل الى الصفحه الرئيسيه 
+  {
+    Nav.navigate('Home') 
+  }
+    else{
+     alert('الاسم او السسما غير صحيحه ')  //اذا لا 
+    }
+})
+      .catch((error) => {      //اذا في مشكله بالسيرفر او الاتصال بالسيرفر 
         console.error('Login error:', error.message);  
-        alert('An error occurred, please check your connection and try again.');
-      });
+        alert('اذا في مشكله بالسيرفر او الاتصال بالسيرفر .');
+      }
+    );
   };
   
   return (
     <View style={styles.container}>
-      <Text>Name (Phone)</Text>
+      <Text style={styles.txt}>Name (Phone)</Text>
       <TextInput
         style={styles.input}
-        onChangeText={setName}  
-        value={name}
+        onChangeText={setName}   
+        value={name}     
         placeholder="Enter your phone number"
       />
-      <Text>Password</Text>
+      <Text style={styles.txt}>Password</Text>
       <TextInput
         style={styles.input}
         onChangeText={setPassword}  
@@ -60,9 +63,10 @@ export default Index;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
     padding: 20,
+    backgroundColor:'brown'
   },
   input: {
     height: 40,
@@ -71,4 +75,7 @@ const styles = StyleSheet.create({
     padding: 10,
     width: '100%',
   },
+  txt:{
+color:'white'
+  }
 });

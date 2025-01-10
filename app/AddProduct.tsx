@@ -24,7 +24,7 @@ price:price
     })
 }
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
          style={styles.input}
          onChangeText={setProductName}  
@@ -49,4 +49,14 @@ price:price
 
 export default AddProduct
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container:{
+        flex:1
+    },
+    input:{
+        borderWidth:1,
+        marginVertical:20,
+        padding:15,
+        width:180
+    }
+})
