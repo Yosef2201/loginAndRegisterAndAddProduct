@@ -2,26 +2,25 @@ import { Button, StyleSheet, Text, View, ScrollView, TouchableOpacity } from 're
 import React, { useEffect, useState } from 'react';
 import Card from './components/Card';
 import { useNavigation } from 'expo-router';
-import { getAllProducts } from '@/API/fechApi';  // Ensure your API path is correct
+import { getAllProducts } from '@/API/fechApi'; 
 
 const Home = () => {
-  const [products, setProducts] = useState([]);  // State to store products
-  const Nav = useNavigation();  // For navigation to AddProduct screen
+  const [products, setProducts] = useState([]);  
+  const Nav = useNavigation();  
 
   useEffect(() => {
-    // Fetch all products when the component mounts
     const fetchProducts = async () => {
       try {
-        const response = await getAllProducts();  // Call the API to get products
-        console.log(response);  // Log the response for debugging
-        setProducts(response.data || []);  // Correctly use `response.data`
+        const response = await getAllProducts();  
+        console.log(response);  
+        setProducts(response.data || []);  
       } catch (error) {
         console.error('Failed to fetch products:', error);
       }
     };
 
-    fetchProducts();  // Fetch products on component mount
-  }, []);  // Empty dependency array ensures it runs once when the component mounts
+    fetchProducts();  
+  }, []); 
 const renderCard=()=>{
     return products.map((item:any)=>(
       <TouchableOpacity onPress={() => Nav.navigate('information', {  ...item})}>
