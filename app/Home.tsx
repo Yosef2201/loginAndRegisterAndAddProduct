@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View, ScrollView } from 'react-native';
+import { Button, StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import Card from './components/Card';
 import { useNavigation } from 'expo-router';
@@ -23,13 +23,17 @@ const Home = () => {
     fetchProducts();  // Fetch products on component mount
   }, []);  // Empty dependency array ensures it runs once when the component mounts
 const renderCard=()=>{
-    return products.map((item)=>(
+    return products.map((item:any)=>(
+      <TouchableOpacity onPress={() => Nav.navigate('information', {  ...item})}>
+
         <Card
         key={item._id}
         productName={item.productName}
         price={item.price}
         Image={item.Image}
       />
+            </TouchableOpacity>
+
     ))
 }
   return (
@@ -49,7 +53,6 @@ const styles = StyleSheet.create({
     // padding: 16,
   },
   scrollContainer: {
-    // flexGrow: 1,
     // justifyContent: 'center',
   },
 });
